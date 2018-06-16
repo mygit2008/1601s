@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_miaosha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:padding="10dp"
+            android:text="京东秒杀"
+            android:textColor="#f00"
+            android:textSize="25dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_background"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_miaosha_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#f00"
+                android:padding="5dp"
+                android:text="10点场"
+                android:textColor="#fff"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/tv_miaosha_shi"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:gravity="center"
+                android:text="1"
+                android:layout_marginLeft="10dp"
+                android:textColor="#f00"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:text=":"
+                android:textColor="#f00" />
+
+            <TextView
+                android:id="@+id/tv_miaosha_minter"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="#f00"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:text=":"
+                android:textColor="#f00" />
+
+            <TextView
+                android:id="@+id/tv_miaosha_second"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="#f00"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/miaosha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"></android.support.v7.widget.RecyclerView>
+</LinearLayout>

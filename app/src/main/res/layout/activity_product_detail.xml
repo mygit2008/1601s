@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_product_detail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="example.com.jddome.homepage.view.ProductDetail">
+
+    <RelativeLayout
+        android:id="@+id/biao"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/leftjiantou" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="商品详情"
+            android:textSize="24dp" />
+    </RelativeLayout>
+    <com.youth.banner.Banner
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_below="@+id/biao"></com.youth.banner.Banner>
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:textSize="24dp"
+        android:layout_below="@+id/banner"
+        android:layout_marginTop="15dp"
+        android:text="title"/>
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/title"
+        android:textSize="18dp"
+        android:layout_marginTop="10dp"
+        android:text="title"/>
+    <TextView
+        android:id="@+id/newPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:textSize="18dp"
+        android:layout_below="@+id/price"
+        android:layout_marginTop="10dp"
+        android:textColor="#f00"
+        android:text="title"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/selCar"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="查询购物车"
+            android:background="#D6D7D7"
+            android:textSize="20dp"/>
+        <Button
+            android:id="@+id/addCar"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="加入购物车"
+            android:background="#f00"
+            android:textSize="20dp"/>
+    </LinearLayout>
+</RelativeLayout>

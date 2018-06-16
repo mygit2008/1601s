@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <example.com.jddome.custom.SearchBar
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></example.com.jddome.custom.SearchBar>
+
+    <example.com.jddome.custom.MyScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rlv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
+    </example.com.jddome.custom.MyScrollView>
+</RelativeLayout>
