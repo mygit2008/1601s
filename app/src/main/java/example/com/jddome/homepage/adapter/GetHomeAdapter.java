@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.youth.banner.Banner;
@@ -135,7 +136,12 @@ public class GetHomeAdapter extends RecyclerView.Adapter {
             List<GetAdHomeBean.DataBean.FenleiBean> fenlei = data.getFenlei();
             ClassifyAdapter classifyAdapter = new ClassifyAdapter(fenlei, MyApp.context);
             viewHolder2.classify.setAdapter(classifyAdapter);
-            return;
+            classifyAdapter.setOnItemClickListener(new ClassifyAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(int position, GetAdHomeBean.DataBean.FenleiBean fenleiBean) {
+                    Toast.makeText(context, fenleiBean.getName(), Toast.LENGTH_SHORT).show();
+                }
+            });
         } else if (getItemViewType(position) == TYPE_THREE) {
             viewHolder3 = (ViewHolder3) holder;
             viewHolder3.miaosha.setLayoutManager(new LinearLayoutManager(MyApp.context, LinearLayoutManager.HORIZONTAL, false));
@@ -147,8 +153,9 @@ public class GetHomeAdapter extends RecyclerView.Adapter {
                 public void onItemClickListener(int position, GetAdHomeBean.DataBean.MiaoshaBean.ListBean listBean) {
                     Intent it = new Intent(MyApp.context, ProductDetail.class);
                     it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    it.putExtra("id", 2);
+                    it.putExtra("pid", listBean.getPid());
                     context.startActivity(it);
-                    EventBus.getDefault().post(listBean);
                 }
             });
             setTime(viewHolder3);
@@ -164,8 +171,8 @@ public class GetHomeAdapter extends RecyclerView.Adapter {
                 public void onItemClick(int position, GetAdHomeBean.DataBean.TuijianBean.ListBeanX listBeanX) {
                     Intent it = new Intent(MyApp.context, ProductDetail.class);
                     it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    it.putExtra("pid", listBeanX.getPid());
                     context.startActivity(it);
-                    EventBus.getDefault().post(listBeanX);
                 }
             });
         }

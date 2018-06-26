@@ -11,7 +11,7 @@ import android.widget.RadioButton;
 import example.com.jddome.classify.Classify;
 import example.com.jddome.fragment.Find;
 import example.com.jddome.homepage.HomePage;
-import example.com.jddome.fragment.Mine;
+import example.com.jddome.mycenter.Mine;
 import example.com.jddome.shoppingcart.ShoppingCart;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -28,7 +28,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-        mHome.performClick();
+        int id = getIntent().getIntExtra("id", 0);//获取intent值
+        if (id == 2) {//判断intent值
+            mCar.performClick();//给按钮设置状态
+        } else {
+            mHome.performClick();
+        }
     }
 
     private void initView() {

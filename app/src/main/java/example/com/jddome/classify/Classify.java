@@ -1,11 +1,15 @@
 package example.com.jddome.classify;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Toast;
 
+import com.dash.zxinglibrary.activity.CaptureActivity;
+import com.dash.zxinglibrary.activity.CodeUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
@@ -23,6 +27,8 @@ import example.com.jddome.classify.model.ClassifyModel;
 import example.com.jddome.classify.presenter.ClassifyPresenter;
 import example.com.jddome.classify.view.IClassifyView;
 import example.com.jddome.custom.SearchBar;
+import example.com.jddome.homepage.WebViewActivity;
+import example.com.jddome.homepage.view.SearchBarActivity;
 
 /**
  * @author zhangjunyou
@@ -55,12 +61,16 @@ public class Classify extends BaseFragment<ClassifyPresenter> implements IClassi
             @Override
             public void onClick(View v) {
                 Toast.makeText(MyApp.context, "扫一扫", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), CaptureActivity.class);
+                startActivityForResult(intent, 6);
             }
         });
         searchBar.setSouOnclickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MyApp.context, "请输入", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MyApp.context, SearchBarActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -113,5 +123,22 @@ public class Classify extends BaseFragment<ClassifyPresenter> implements IClassi
         List<ClassifyChildBean.DataBean> data = classifyChildBean.getData();
         RightClassifyAdapter rightClassifyAdapter = new RightClassifyAdapter(MyApp.context, data);
         mRightClassify.setAdapter(rightClassifyAdapter);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 6 && null != data) {
+            Bundle bundle = data.getExtras();
+            if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
+                String result = bundle.getString(CodeUtils.RESULT_STRING);
+                //拿到最终结果
+                Intent intent = new Intent(MyApp.context, WebViewActivity.class);
+                intent.putExtra("detailUrl", result);
+                startActivity(intent);
+                Toast.makeText(MyApp.context, "解析结果:" + result, Toast.LENGTH_LONG).show();
+            } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
+                Toast.makeText(MyApp.context, "解析二维码失败", Toast.LENGTH_LONG).show();
+            }
+        }
     }
 }

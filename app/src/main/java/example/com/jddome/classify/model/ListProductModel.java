@@ -3,7 +3,7 @@ package example.com.jddome.classify.model;
 import example.com.base.mvp.BaseModel;
 import example.com.jddome.classify.bean.ListProductBean;
 import example.com.jddome.classify.bean.SeekBean;
-import example.com.jddome.netutils.RetrofitUtil;
+import example.com.jddome.utils.RetrofitUtil;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;

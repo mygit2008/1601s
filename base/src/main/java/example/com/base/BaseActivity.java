@@ -54,7 +54,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     /**
      * 初始化控件
      */
-    public static void initView(){
+    public void initView(){
 
     };
 

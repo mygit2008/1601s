@@ -40,6 +40,7 @@ public class ListProduct extends BaseActivity<ListProductPresenter> implements I
     private int page = 1;
     private int id;
     private String pname;
+    private String name;
 
     @Override
     protected BaseModel initModel() {
@@ -61,14 +62,15 @@ public class ListProduct extends BaseActivity<ListProductPresenter> implements I
         //获取pscid
         Intent intent = getIntent();
         pscid = intent.getIntExtra("pscid", 1);
+        name = intent.getStringExtra("name");
         pname = intent.getStringExtra("pname");
         id = intent.getIntExtra("id", 1);
         mXrlv.setLayoutManager(new LinearLayoutManager(MyApp.context));
 
         if (id == 2) {
-            presenter.getSeekProduct(pname, page);
-        } else {
             presenter.getProducts(pscid, page);
+        } else if (id == 3) {
+            presenter.getSeekProduct(pname, page);
         }
     }
 
@@ -77,6 +79,7 @@ public class ListProduct extends BaseActivity<ListProductPresenter> implements I
         List<ListProductBean.DataBean> data = listProductBean.getData();
         ListProductAdapter adapter = new ListProductAdapter(MyApp.context, data);
         mXrlv.setAdapter(adapter);
+        et_search.setText(name + "");
         adapter.setOnItemClickListener(new ListProductAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position, ListProductBean.DataBean dataBean) {

@@ -58,9 +58,13 @@ public class RightClassifyItemAdapter extends RecyclerView.Adapter {
                 //点击跳转到列表页面
                 Intent intent = new Intent(MyApp.context, ListProduct.class);
                 int pscid = list.get(position).getPscid();
+                String name = list.get(position).getName();
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("pscid", pscid);
-                Log.e("pscid-------->",pscid+"");
+                intent.putExtra("name", name);
+                intent.putExtra("id",2);
+                Log.e("pscid-------->", pscid + "");
+                Log.e("name-------->", name + "");
                 MyApp.context.startActivity(intent);
             }
         });

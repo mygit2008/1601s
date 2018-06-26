@@ -2,7 +2,7 @@ package example.com.jddome.homepage.model;
 
 import example.com.base.mvp.BaseModel;
 import example.com.jddome.homepage.bean.GetAdHomeBean;
-import example.com.jddome.netutils.RetrofitUtil;
+import example.com.jddome.utils.RetrofitUtil;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;

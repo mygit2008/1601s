@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical" >
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white" >
+
+        <CheckBox
+            android:id="@+id/determine_chekbox"
+            android:layout_width="20px"
+            android:layout_height="20px"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10px"
+            android:layout_marginRight="10px"
+            android:gravity="center"
+            android:button="@null"
+            android:background="@drawable/checkbox_style"
+           />
+
+        <TextView
+            android:id="@+id/tv_source_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/determine_chekbox"
+            android:background="@android:color/white"
+            android:drawablePadding="10dp"
+            android:text="第八号当铺"
+            android:textColor="@color/grey_color2"
+            android:textSize="18sp" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+</com.zhy.autolayout.AutoLinearLayout>

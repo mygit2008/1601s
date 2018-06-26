@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:textSize="20dp"
+    android:textSize="20sp"
+    android:padding="30px"
     android:gravity="center"
     android:text="为您推荐"/>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/tuijian"
         android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="10px"
         android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
-</LinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

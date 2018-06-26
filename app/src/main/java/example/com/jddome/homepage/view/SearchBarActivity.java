@@ -63,7 +63,7 @@ public class SearchBarActivity extends AppCompatActivity {
             case R.id.tv_search:
                 String s = etSearch.getText().toString();
                 Intent it = new Intent(SearchBarActivity.this, ListProduct.class);
-                it.putExtra("id", 2);
+                it.putExtra("id", 3);
                 it.putExtra("pname", s);
                 startActivity(it);
                 break;
@@ -96,7 +96,7 @@ public class SearchBarActivity extends AppCompatActivity {
                     goodsDao.insert(goods);
                     history();
                     Intent it = new Intent(SearchBarActivity.this, ListProduct.class);
-                    it.putExtra("id", 2);
+                    it.putExtra("id", 3);
                     it.putExtra("pname", s);
                     startActivity(it);
                 }

@@ -2,12 +2,17 @@ package example.com.jddome.homepage;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import com.dash.zxinglibrary.activity.CaptureActivity;
+import com.dash.zxinglibrary.activity.CodeUtils;
 
 import example.com.base.BaseFragment;
 import example.com.base.mvp.BaseModel;
@@ -34,7 +39,8 @@ public class HomePage extends BaseFragment<GetHomePresenter> implements IGetHome
     private RecyclerView mRlv;
     private SearchBar line;
     private MyScrollView scrollView;
-    private int imageHeight = 50; //设置渐变高度，一般为导航图片高度，自己控制
+    private final int REQUEST_CODE = 5;
+    private int imageHeight = 150; //设置渐变高度，一般为导航图片高度，自己控制
 
     @Override
     protected void initView(View view) {
@@ -69,6 +75,8 @@ public class HomePage extends BaseFragment<GetHomePresenter> implements IGetHome
             @Override
             public void onClick(View v) {
                 Toast.makeText(MyApp.context, "扫一扫", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), CaptureActivity.class);
+                startActivityForResult(intent, 5);
             }
         });
         line.setSouOnclickListener(new View.OnClickListener() {
@@ -107,5 +115,22 @@ public class HomePage extends BaseFragment<GetHomePresenter> implements IGetHome
         mRlv.setLayoutManager(new LinearLayoutManager(MyApp.context));
         GetHomeAdapter adAdapter = new GetHomeAdapter(MyApp.context, data);
         mRlv.setAdapter(adAdapter);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 5 && null != data) {
+            Bundle bundle = data.getExtras();
+            if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
+                String result = bundle.getString(CodeUtils.RESULT_STRING);
+                //拿到最终结果
+                Intent intent = new Intent(MyApp.context, WebViewActivity.class);
+                intent.putExtra("detailUrl", result);
+                startActivity(intent);
+                Toast.makeText(MyApp.context, "解析结果:" + result, Toast.LENGTH_LONG).show();
+            } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
+                Toast.makeText(MyApp.context, "解析二维码失败", Toast.LENGTH_LONG).show();
+            }
+        }
     }
 }

@@ -9,4 +9,5 @@ package example.com.jddome.api;
 
 public class BaseAPI {
     public static final String GETAD = "https://www.zhaoapi.cn/";
+    public static final String UPLOAD = "https://www.zhaoapi.cn/file/upload";
 }

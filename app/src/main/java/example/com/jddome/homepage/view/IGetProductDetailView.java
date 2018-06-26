@@ -1,6 +1,7 @@
 package example.com.jddome.homepage.view;
 
 import example.com.base.mvp.IBaseView;
+import example.com.jddome.homepage.bean.AddCartBean;
 import example.com.jddome.homepage.bean.GetProductDetail;
 
 /**
@@ -12,4 +13,5 @@ import example.com.jddome.homepage.bean.GetProductDetail;
 
 public interface IGetProductDetailView extends IBaseView{
     void success(GetProductDetail getProductDetail);
+    void addSuccess(AddCartBean addCartBean);
 }

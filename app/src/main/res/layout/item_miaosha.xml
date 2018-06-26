@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <LinearLayout
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="30px"
+        android:text="京东秒杀"
+        android:textSize="20sp" />
+
+    <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -14,13 +22,13 @@
             android:id="@+id/tv_miaosha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:padding="10dp"
+            android:layout_marginLeft="5px"
+            android:padding="10px"
             android:text="京东秒杀"
             android:textColor="#f00"
-            android:textSize="25dp" />
+            android:textSize="18sp" />
 
-        <LinearLayout
+        <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/shape_background"
@@ -31,32 +39,32 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#f00"
-                android:padding="5dp"
+                android:padding="7px"
                 android:text="10点场"
                 android:textColor="#fff"
-                android:textSize="20dp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tv_miaosha_shi"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10px"
                 android:gravity="center"
                 android:text="1"
-                android:layout_marginLeft="10dp"
                 android:textColor="#f00"
                 android:textSize="15sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="3dp"
+                android:padding="3px"
                 android:text=":"
                 android:textColor="#f00" />
 
             <TextView
                 android:id="@+id/tv_miaosha_minter"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="1"
                 android:textColor="#f00"
@@ -65,25 +73,26 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="3dp"
+                android:padding="3px"
                 android:text=":"
                 android:textColor="#f00" />
 
             <TextView
                 android:id="@+id/tv_miaosha_second"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10px"
                 android:gravity="center"
                 android:text="1"
                 android:textColor="#f00"
                 android:textSize="15sp" />
-        </LinearLayout>
-    </LinearLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
 
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/miaosha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"></android.support.v7.widget.RecyclerView>
-</LinearLayout>
+        android:layout_marginTop="10px"></android.support.v7.widget.RecyclerView>
+</com.zhy.autolayout.AutoLinearLayout>

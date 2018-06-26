@@ -1,6 +1,7 @@
 package example.com.jddome.homepage.presenter;
 
 import example.com.base.mvp.BasePresenter;
+import example.com.jddome.homepage.bean.AddCartBean;
 import example.com.jddome.homepage.bean.GetProductDetail;
 import example.com.jddome.homepage.model.ProductDetailModel;
 import example.com.jddome.homepage.view.IGetProductDetailView;
@@ -22,8 +23,27 @@ public class ProductDetailPresenter extends BasePresenter<ProductDetailModel, IG
                             view.success(getProductDetail);
                         }
                     }
+
+                    @Override
+                    public void addSuccess(AddCartBean addCartBean) {
+
+                    }
                 }
         );
+    }
+
+    public void addCart(String uid, int pid) {
+        model.addCart(uid, pid, new ProductDetailModel.IProductDetailModel() {
+            @Override
+            public void success(GetProductDetail getProductDetail) {
+
+            }
+
+            @Override
+            public void addSuccess(AddCartBean addCartBean) {
+                view.addSuccess(addCartBean);
+            }
+        });
     }
 
     public void detach() {

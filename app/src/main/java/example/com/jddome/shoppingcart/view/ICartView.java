@@ -1,7 +1,8 @@
 package example.com.jddome.shoppingcart.view;
 
 import example.com.base.mvp.IBaseView;
-import example.com.jddome.shoppingcart.bean.CartBean;
+import example.com.jddome.shoppingcart.bean.DeleteCartBean;
+import example.com.jddome.shoppingcart.bean.Selectshop;
 
 /**
  * @author zhangjunyou
@@ -11,5 +12,6 @@ import example.com.jddome.shoppingcart.bean.CartBean;
  */
 
 public interface ICartView extends IBaseView{
-    void success(CartBean cartBean);
+    void success(Selectshop selectshop);
+    void delSuccess(DeleteCartBean deleteCartBean);
 }

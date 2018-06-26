@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <TextView
@@ -8,4 +8,4 @@
         android:textSize="26dp"
         android:textColor="#AF79B3"
         android:id="@+id/tv_item1"/>
-</LinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

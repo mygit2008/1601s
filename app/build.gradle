@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.jakewharton.butterknife'
 apply plugin: 'org.greenrobot.greendao'
-
+apply plugin: 'com.mob.sdk'
 android {
     compileSdkVersion 26
     buildToolsVersion "27.0.3"
@@ -9,6 +9,7 @@ android {
         applicationId "example.com.jddome"
         minSdkVersion 15
         targetSdkVersion 26
+        multiDexEnabled true
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -20,10 +21,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    greendao{
+    greendao {
         schemaVersion 3
         daoPackage 'example.com.jddome.greendao' // 一般为app包名+生成文件的文件夹名
         targetGenDir 'src/main/java' //生成文件路径
+    }
+    MobSDK {
+        appKey "268465d87edf4"
+        appSecret "6d2b5c8bca725f21672ddba589206ed0"
+        SMSSDK {}
     }
 }
 
@@ -35,6 +41,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
     testCompile 'junit:junit:4.12'
     //控件查找butterknife
+    compile 'com.android.support:multidex:1.0.1'
     //加入下面这两行代码
     compile 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
@@ -45,6 +52,8 @@ dependencies {
     compile 'com.facebook.fresco:animated-gif:1.3.0'
     // WebP（静态图+动图）加载使用
     compile 'com.facebook.fresco:animated-webp:1.3.0'
+    //图片加载框架glide
+    compile 'com.github.bumptech.glide:glide:3.7.0'
     //RecyclerView
     compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
     compile 'com.jcodecraeer:xrecyclerview:1.3.2'
@@ -61,15 +70,18 @@ dependencies {
     compile 'com.youth.banner:banner:1.4.9'
     compile 'org.greenrobot:greendao:3.1.0'
     compile project(':base')
-}
-//修改依赖
-configurations.all {
-    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-        def requested = details.requested
-        if (requested.group == 'com.android.support') {
-            if (!requested.name.startsWith("multidex")) {
-                details.useVersion '27.1.1'
-            }
-        }
-    }
+    compile project(':zxinglibrary')
+    compile files('libs/umeng-analytics-7.5.0.jar')
+    compile files('libs/umeng-sharetool-6.9.1.jar')
+    compile files('libs/umeng-share-core-6.9.1.jar')
+    compile files('libs/umeng-share-wechat-simplify-6.9.1.jar')
+    compile files('libs/umeng-share-QQ-simplify-6.9.1.jar')
+    compile files('libs/umeng-debug-1.0.0.jar')
+    compile files('libs/umeng-common-1.5.0.jar')
+    //3D地图so及jar
+    compile 'com.amap.api:3dmap:latest.integration'
+//搜索功能
+    compile 'com.amap.api:search:latest.integration'
+    //屏幕适配
+    compile 'com.zhy:autolayout:1.3.6'
 }

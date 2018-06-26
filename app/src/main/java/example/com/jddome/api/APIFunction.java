@@ -1,13 +1,30 @@
 package example.com.jddome.api;
 
+import java.io.File;
+import java.util.Map;
+
 import example.com.jddome.classify.bean.ClassifyBean;
 import example.com.jddome.classify.bean.ClassifyChildBean;
 import example.com.jddome.classify.bean.ListProductBean;
 import example.com.jddome.classify.bean.SeekBean;
+import example.com.jddome.homepage.bean.AddCartBean;
 import example.com.jddome.homepage.bean.GetAdHomeBean;
 import example.com.jddome.homepage.bean.GetProductDetail;
+import example.com.jddome.mycenter.bean.GetUserInfo;
+import example.com.jddome.mycenter.login.bean.LoginBean;
+import example.com.jddome.mycenter.register.bean.RegBean;
+import example.com.jddome.shoppingcart.bean.DeleteCartBean;
+import example.com.jddome.shoppingcart.bean.Selectshop;
 import io.reactivex.Observable;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
+import retrofit2.http.POST;
+import retrofit2.http.Part;
+import retrofit2.http.PartMap;
 import retrofit2.http.Query;
 
 /**
@@ -18,6 +35,46 @@ import retrofit2.http.Query;
  */
 
 public interface APIFunction {
+    /**
+     * 登录
+     *
+     * @param mobile
+     * @param password
+     * @return
+     */
+    @GET("user/login")
+    Observable<LoginBean> login(@Query("mobile") String mobile, @Query("password") String password);
+
+    /**
+     * 注册
+     *
+     * @param mobile
+     * @param password
+     * @return
+     */
+    @GET("user/reg")
+    Observable<RegBean> register(@Query("mobile") String mobile, @Query("password") String password);
+
+    /**
+     * 获取用户信息
+     *
+     * @param uid
+     * @return
+     */
+    @GET("user/getUserInfo")
+    Observable<GetUserInfo> getUserInfo(@Query("uid") String uid);
+
+    /**
+     * 上传头像
+     *
+     * @param file
+     * @param uid
+     * @return
+     */
+    @Multipart
+    @POST("file/upload")
+    Observable<ResponseBody> upload(@Part("file") File file, @Query("uid") String uid);
+
     /**
      * 首页
      *
@@ -69,4 +126,33 @@ public interface APIFunction {
      */
     @GET("product/searchProducts")
     Observable<SeekBean> searchProducts(@Query("keywords") String keywords, @Query("page") int page);
+
+    /**
+     * 查询购物车
+     *
+     * @param uid
+     * @return
+     */
+    @GET("product/getCarts")
+    Observable<Selectshop> selectCart(@Query("uid") String uid);
+
+    /**
+     * 添加购物车
+     *
+     * @param uid
+     * @param pid
+     * @return
+     */
+    @GET("product/addCart")
+    Observable<AddCartBean> addCart(@Query("uid") String uid, @Query("pid") int pid);
+
+    /**
+     * 删除购物车
+     *
+     * @param uid
+     * @param pid
+     * @return
+     */
+    @GET("product/deleteCart")
+    Observable<DeleteCartBean> deleteCart(@Query("uid") String uid, @Query("pid") int pid);
 }

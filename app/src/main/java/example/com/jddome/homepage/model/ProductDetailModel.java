@@ -1,16 +1,14 @@
 package example.com.jddome.homepage.model;
 
 import example.com.base.mvp.BaseModel;
+import example.com.jddome.homepage.bean.AddCartBean;
 import example.com.jddome.homepage.bean.GetProductDetail;
 import example.com.jddome.homepage.view.IGetProductDetailView;
-import example.com.jddome.netutils.RetrofitUtil;
+import example.com.jddome.utils.RetrofitUtil;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * @author zhangjunyou
@@ -49,7 +47,36 @@ public class ProductDetailModel extends BaseModel {
                 });
     }
 
+    public void addCart(String uid, int pid, final IProductDetailModel iProductDetailModel) {
+        RetrofitUtil.getInstence().API().addCart(uid, pid)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<AddCartBean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(AddCartBean addCartBean) {
+                        iProductDetailModel.addSuccess(addCartBean);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
     public interface IProductDetailModel {
         void success(GetProductDetail getProductDetail);
+
+        void addSuccess(AddCartBean addCartBean);
     }
 }
